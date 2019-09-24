@@ -21,7 +21,7 @@ const settings =  {
 		addressSelector: 'span[itemprop="addressRegion"]',
 	},
 
-	searchUrl: ()=> {
+	searchUrl: function () {
 		return `https://www.pracuj.pl/praca/${this.keywords.join("%20")};kw/${this.location};wp`
 	} 
 }

@@ -13,17 +13,28 @@ const getJoobleOffers = (searchKeywords, location, callback)=> {
         uri: joobleAPiUrl,
         body: searchParams
     }
+
+
     
     requestPromise(options)
         .then(response => {
-            const data = JSON.parse(response)
-            callback(data)
+            const data = JSON.parse(response);
+            const dataUnified = data.jobs.map(offerObject => {
+                return {
+                    jobTitle: offerObject.title,
+                    datePosted: offerObject.updated,
+                    jobUrl: offerObject.link,
+                    employer: offerObject.company,
+                    address: offerObject.location,
+                    employer_opinion: 'test'
+                }
+            })
+
+            callback(dataUnified)
         })
         .catch(error=> {
             //eval(require('locus'))
-            console.log(`######Error occured#######`)
-            console.log(Object.keys(error))
-            console.log(error.statusCode)
+            console.log(`######Error occured in Jooble#######`)
             console.log(error)
         })
     

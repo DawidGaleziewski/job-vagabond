@@ -36,9 +36,7 @@ const scrapeSite = (settings, callback) => {
 
 			return Promise.all(
 				offerUrls.map(function(offerUrl){
-					//console.log(siteUrl + offerUrl)
 					const offerFullUrl = settings.siteUrl + offerUrl
-					console.log(offerFullUrl)
 					//Individual offers getting parsed
 					return offerParse(offerFullUrl, settings)
 				})

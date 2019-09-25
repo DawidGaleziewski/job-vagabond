@@ -5,7 +5,6 @@ const $ = require('cheerio');
 const offerParse = function(offerUrl, settings){
 	return rp(offerUrl)
 	  .then(function(html) {
-		console.log($(settings.offerDOMSelectors.jobTitleSelector , html).text())
 		return {
 			jobTitle: $(settings.offerDOMSelectors.jobTitleSelector , html).text(),
 			datePosted: $(settings.offerDOMSelectors.datePostedSelector, html).text(),
